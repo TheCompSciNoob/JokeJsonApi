@@ -15,12 +15,12 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class JokeViewModel : ViewModel() {
 
-    val jokesList: MutableLiveData<List<Joke>> = MutableLiveData()
-    val url = "https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/"
-    val retrofit = Retrofit.Builder()
+    val jokesList = MutableLiveData<List<Joke>>()
+    private val url = "https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/"
+    private val retrofit = Retrofit.Builder()
             .baseUrl(url)
             .addConverterFactory(GsonConverterFactory.create())
-            .build()
+            .build()!!
     val api = retrofit.create(JokesAPI::class.java)
 
     init {
